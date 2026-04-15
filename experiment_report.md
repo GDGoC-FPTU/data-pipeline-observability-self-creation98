@@ -21,10 +21,24 @@ Chay `agent_simulation.py` voi 2 bo du lieu va ghi lai ket qua:
 
 ### Tai sao Agent tra loi sai khi dung Garbage Data?
 
-Khi su dung du lieu rac (garbage data), Agent da tra loi hoan toan sai vi nhieu ly do lien quan den chat luong du lieu dau vao. Thu nhat, du lieu chua Duplicate IDs (id=1 xuat hien hai lan voi san pham khac nhau), khien Agent khong the phan biet chinh xac giua cac san pham. Thu hai, cot price co gia tri sai kieu du lieu (vi du: "ten dollars" thay vi so), lam cho viec tinh toan va so sanh gia tro nen khong dang tin cay. Thu ba, du lieu chua extreme outlier nhu Nuclear Reactor voi gia 999999 dollar, day la gia tri bat thuong khien Agent chon no la san pham tot nhat chi vi gia cao nhat, mac du no khong phai la san pham electronics hop ly. Thu tu, cac truong null values (id=None, category=None) tao ra cac record khong co y nghia, lam nhiem du lieu. Tat ca nhung van de nay cho thay rang neu khong co buoc Data Validation va Data Cleaning truoc khi dua du lieu vao AI Agent, ket qua tra ve se hoan toan sai lech va khong the tin tuong duoc. Pipeline ETL voi buoc validation giup loai bo cac record loi, dam bao Agent chi lam viec voi du lieu sach va cho ket qua chinh xac.
+Khi sử dụng dữ liệu rác (garbage data), Agent đã trả lời hoàn toàn sai vì nhiều lý do liên quan đến chất lượng dữ liệu đầu vào.
+
+Thứ nhất, dữ liệu chứa Duplicate IDs (id = 1 xuất hiện hai lần với sản phẩm khác nhau), khiến Agent không thể phân biệt chính xác giữa các sản phẩm.
+
+Thứ hai, cột price có giá trị sai kiểu dữ liệu (ví dụ: "ten dollars" thay vì số), làm cho việc tính toán và so sánh giá trở nên không đáng tin cậy.
+
+Thứ ba, dữ liệu chứa extreme outlier như Nuclear Reactor với giá 999999 đô la, đây là giá trị bất thường khiến Agent chọn nó là sản phẩm tốt nhất chỉ vì giá cao nhất, mặc dù nó không phải là sản phẩm electronics hợp lý.
+
+Thứ tư, các trường null values (id = None, category = None) tạo ra các record không có ý nghĩa, làm nhiễm dữ liệu.
+
+Tất cả những vấn đề này cho thấy rằng nếu không có bước Data Validation và Data Cleaning trước khi đưa dữ liệu vào AI Agent, kết quả trả về sẽ hoàn toàn sai lệch và không thể tin tưởng được.
+
+Pipeline ETL với bước validation giúp loại bỏ các record lỗi, đảm bảo Agent chỉ làm việc với dữ liệu sạch và cho kết quả chính xác.
 
 ---
 
 ## 3. Ket luan
 
-**Quality Data > Quality Prompt?** Dong y hoan toan. Du prompt co tot den dau, neu du lieu dau vao bi loi (outliers, duplicates, null values, wrong types) thi Agent van se cho ra ket qua sai. Data Quality la nen tang quan trong nhat cua bat ky he thong AI nao. Mot pipeline ETL tot voi validation chat che se dam bao du lieu sach, tu do giup Agent dua ra cau tra loi chinh xac va dang tin cay hon.
+**Quality Data > Quality Prompt?** Đồng ý hoàn toàn. Dù prompt có tốt đến đâu, nếu dữ liệu đầu vào bị lỗi (outliers, duplicates, null values, wrong types) thì Agent vẫn sẽ cho ra kết quả sai.
+
+Data Quality là nền tảng quan trọng nhất của bất kỳ hệ thống AI nào. Một pipeline ETL tốt với bước validation chặt chẽ sẽ đảm bảo dữ liệu sạch, từ đó giúp Agent đưa ra câu trả lời chính xác và đáng tin cậy hơn.
